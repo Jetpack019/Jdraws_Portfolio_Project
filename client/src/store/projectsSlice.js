@@ -4,28 +4,26 @@ export const fetchProjects = createAsyncThunk(
   "projects/fetchProjects",
   async () => {
     const response = await fetch(
-      "https://raw.githubusercontent.com/Jetpack019/My_Custom_APIs/main/projects.json"
+      "https://raw.githubusercontent.com/Jetpack019/My_Custom_APIs/refs/heads/main/projects.json?token=GHSAT0AAAAAADHW5VWJJACB4RFVUIAMT5Y42F7D5FQ"
     );
     if (!response.ok) {
       throw new Error("Failed to fetch projects");
     }
-    return await response.json();
+    const data = await response.json();
+
+    // Combine website + mobile into one array
+    return data;
   }
 );
 
 const projectsSlice = createSlice({
   name: "projects",
   initialState: {
-    items: [],
+    items: { website: [], mobile: [] },
     isLoading: false,
     error: null,
   },
-  reducers: {
-    addProject: (state, action) => {
-      state.items.push(action.payload);
-    },
-  },
-
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProjects.pending, (state) => {
@@ -34,7 +32,7 @@ const projectsSlice = createSlice({
       })
       .addCase(fetchProjects.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items = action.payload; // keep structure
       })
       .addCase(fetchProjects.rejected, (state, action) => {
         state.isLoading = false;
@@ -43,5 +41,4 @@ const projectsSlice = createSlice({
   },
 });
 
-export const { addProject } = projectsSlice.actions;
 export default projectsSlice.reducer;
