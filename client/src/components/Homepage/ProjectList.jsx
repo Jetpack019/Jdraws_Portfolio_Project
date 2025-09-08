@@ -51,10 +51,8 @@ function ProjectList() {
               backgroundPosition: "center",
             }}
           >
-            {/* Overlay for readability */}
             <div className="absolute inset-0 bg-black/60"></div>
 
-            {/* Content */}
             <div className="relative p-5 flex flex-col justify-between h-64">
               <div>
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
