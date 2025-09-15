@@ -3,6 +3,7 @@ import projectsReducer from "./projectsSlice";
 import userReducer from "./userSlice";
 import designsReducer from "./designSlice";
 import experienceReducer from "./experienceSlice";
+import internshipReducer from "./internshipSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     user: userReducer,
     designs: designsReducer,
     experience: experienceReducer,
+    internship: internshipReducer,
   },
 });
 
