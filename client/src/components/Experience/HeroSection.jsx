@@ -1,69 +1,50 @@
-import React, { useState } from "react";
-import experience_img_1 from "./../../assets/react.svg";
-import experience_img_2 from "./../../assets/react.svg";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchExperience } from "../../store/experienceSlice";
+
 const experienceButton = [
-  "Arena Entry",
-  "Community Hub",
-  "Game Stay",
-  "Team Growth",
+  "Internship",
+  "AI Annotation",
+  "Tech Expertise",
+  "Hands On",
 ];
 
-const experienceContent = [
-  {
-    image: experience_img_1,
-    title: "Welcome to the Arena",
-    subtitle: "Where Gamers Unite",
-    description: `Our forum is the ultimate meeting ground for players, creators, and 
-    fans from every corner of the gaming world. Whether you're here to 
-    share your latest strategies, find allies for your next quest, or 
-    debate the best boss battles, you’re in the right place.`,
-  },
-  {
-    image: experience_img_2,
-    title: "Community First",
-    subtitle: "Built by Players, for Players",
-    description: `Every post, reply, and discussion shapes the world of our forum. 
-    We believe in an inclusive space where newcomers and veterans 
-    alike can share knowledge, celebrate victories, and spark epic 
-    collaborations.`,
-  },
-  {
-    image: experience_img_1,
-    title: "Stay in the Game",
-    subtitle: "News, Guides, and More",
-    description: `From patch notes to deep-dive game guides, our community keeps 
-    you updated on the latest happenings in the gaming universe. 
-    Learn from pros, discover hidden tips, and never miss out on the 
-    next big update.`,
-  },
-  {
-    image: experience_img_2,
-    title: "Level Up Together",
-    subtitle: "Your Journey Starts Here",
-    description: `Whether you're a casual player or a hardcore competitor, there’s 
-    always a seat at our table. Jump into conversations, share your 
-    stories, and let’s create unforgettable moments — both in-game 
-    and beyond.`,
-  },
-];
 function HeroSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const dispatch = useDispatch();
+  const { items, isLoading, error } = useSelector((state) => state.experience);
 
-  const activeContent = experienceContent[activeIndex];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showFullImage, setShowFullImage] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchExperience());
+  }, [dispatch]);
+
+  if (isLoading) return <p className="text-white">Loading experience...</p>;
+  if (error)
+    return <p className="text-red-500">Error loading experience: {error}</p>;
+
+  if (!items || items.length === 0) {
+    return <p className="text-white">No experience found.</p>;
+  }
+
+  const activeContent = items[activeIndex];
+
   return (
     <section className="w-full min-h-[100vh] flex flex-col lg:flex-row mx-auto px-10 py-20 items-center gap-10">
       <div className="flex-1 flex justify-center">
         <AnimatePresence mode="wait">
           <motion.img
-            key={activeContent.image}
-            src={activeContent.image}
+            key={activeContent.smimage}
+            src={activeContent.smimage}
             alt={activeContent.title}
-            className="w-[500px] h-[500px] object-contain rounded-2xl shadow-lg"
+            className="w-[500px] h-[500px] object-contain rounded-2xl shadow-lg cursor-pointer"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5 }}
+            onClick={() => setShowFullImage(true)}
           />
         </AnimatePresence>
       </div>
@@ -102,6 +83,28 @@ function HeroSection() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {showFullImage && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowFullImage(false)}
+          >
+            <motion.img
+              src={activeContent.image}
+              alt={activeContent.title}
+              className="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

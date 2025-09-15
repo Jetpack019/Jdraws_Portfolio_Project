@@ -23,7 +23,7 @@ const designSlice = createSlice({
     error: null,
   },
   reducers: {
-    addProject: (state, action) => {
+    addDesign: (state, action) => {
       state.items.push(action.payload);
     },
   },
