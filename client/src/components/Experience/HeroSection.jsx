@@ -87,7 +87,7 @@ function HeroSection() {
       <AnimatePresence>
         {showFullImage && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-3"
+            className="fixed inset-0 bg-black/90 flex justify-center items-center z-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
