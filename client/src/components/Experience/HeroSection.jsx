@@ -76,7 +76,7 @@ function HeroSection() {
             className="space-y-4"
           >
             <h1 className="text-3xl font-bold">{activeContent.title}</h1>
-            <h3 className="text-xl text-gray-600">{activeContent.subtitle}</h3>
+            <h3 className="text-xl text-gray-600">{activeContent.duration}</h3>
             <p className="text-gray-700 leading-relaxed max-w-xl">
               {activeContent.description}
             </p>

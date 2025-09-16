@@ -1,3 +1,4 @@
+import AIAnnotation from "./components/Experience/AIAnnotation";
 import Internship from "./components/Experience/Internship";
 import Navbar from "./components/Navbar";
 import Experience from "./pages/Experience";
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Internship />
+      <AIAnnotation />
     </>
   );
 }

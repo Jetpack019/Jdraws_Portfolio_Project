@@ -4,6 +4,7 @@ import userReducer from "./userSlice";
 import designsReducer from "./designSlice";
 import experienceReducer from "./experienceSlice";
 import internshipReducer from "./internshipSlice";
+import annotationReducer from "./annotationSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     designs: designsReducer,
     experience: experienceReducer,
     internship: internshipReducer,
+    annotation: annotationReducer,
   },
 });
 

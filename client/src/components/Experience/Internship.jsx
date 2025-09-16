@@ -25,11 +25,11 @@ function Internship() {
   return (
     <section className="m-40">
       <div
-        className="relative w-full min-h-[80vh] bg-cover bg-center flex flex-col lg:flex-row items-center justify-between px-10 py-20 text-white"
-        style={{ backgroundImage: `url(${items.bg_image})` }}
+        className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col lg:flex-row items-center justify-between px-10 py-20 text-white"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url(${items.bg_image})`,
+        }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-
         <div className="relative z-10 flex-1 space-y-20 max-w-2xl">
           <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow">
             {items.title}
