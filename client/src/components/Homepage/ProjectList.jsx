@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProjects } from "../../store/projectsSlice";
 import { X } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
+
 function ProjectList() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.projects);
