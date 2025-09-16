@@ -1,14 +1,12 @@
-import AIAnnotation from "./components/Experience/AIAnnotation";
-import Internship from "./components/Experience/Internship";
+import HandsOn from "./components/Experience/HandsOn";
+import ProjectList from "./components/Homepage/ProjectList";
 import Navbar from "./components/Navbar";
-import Experience from "./pages/Experience";
-import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <>
       <Navbar />
-      <AIAnnotation />
+      <HandsOn />
     </>
   );
 }
