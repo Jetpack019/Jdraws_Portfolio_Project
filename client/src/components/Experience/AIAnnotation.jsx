@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAnnotation } from "../../store/annotationSlice";
-
+import { X } from "lucide-react";
 function AIAnnotation() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.annotation);
-
+  const [selectedProject, setSelectedProject] = useState(null);
   useEffect(() => {
     dispatch(fetchAnnotation());
   }, [dispatch]);
@@ -21,17 +21,19 @@ function AIAnnotation() {
       </h1>
 
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className="flex-1 p-6 ">
-          <h2 className="text-xl font-medium text-white ">Work With:</h2>
-          <div className="flex gap-4 ">
-            {items.work?.map((icon, i) => (
-              <img
-                key={i}
-                src={icon}
-                alt={`Tech-${i}`}
-                className="w-50 h-50 object-contain hover:scale-110 transition"
-              />
-            ))}
+        <div className="flex-1 p-6 space-y-40">
+          <div>
+            <h2 className="text-xl  text-white ">Work With:</h2>
+            <div className="flex gap-4 ">
+              {items.work?.map((icon, i) => (
+                <img
+                  key={i}
+                  src={icon}
+                  alt={`Tech-${i}`}
+                  className="w-50 h-50 object-contain hover:scale-110 transition"
+                />
+              ))}
+            </div>
           </div>
           <p className="font-light text-3xl text-gray-300">
             {items.description}
@@ -42,16 +44,72 @@ function AIAnnotation() {
           {items.type?.map((project) => (
             <div
               key={project.id}
+              onClick={() => setSelectedProject(project)}
               className="bg-gray-800/50 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-[1.02] transition cursor-pointer"
             >
               <img
                 src={project.data_image}
                 alt={project.title}
-                className="w-full h-100 object-cover"
+                className="w-full h-60 object-cover"
               />
             </div>
           ))}
         </div>
+
+        {selectedProject && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-10">
+            <div className="bg-gray-900 rounded-2xl shadow-lg max-w-4xl w-full p-6 relative overflow-y-auto max-h-[90vh] scrollbar-hide">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-3 right-3 text-white hover:text-red-500 cursor-pointer"
+              >
+                <X size={28} strokeWidth={2} />
+              </button>
+
+              <img
+                src={selectedProject.data_image}
+                alt={selectedProject.title}
+                className="w-full h-72 object-cover rounded-lg mb-6 shadow-md mt-10"
+              />
+
+              <p className="text-gray-300 mb-6 text-lg leading-relaxed">
+                {selectedProject.description1}
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <img
+                    src={selectedProject.images?.[0]}
+                    alt={`${selectedProject.title}-img1`}
+                    className="w-full md:w-1/2 h-60 object-cover rounded-lg shadow-md"
+                  />
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-white mb-3">
+                      {selectedProject.title}
+                    </h2>
+                    <p className="text-gray-300 leading-relaxed">
+                      {selectedProject.description2}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <img
+                    src={selectedProject.images?.[1]}
+                    alt={`${selectedProject.title}-img2`}
+                    className="w-full md:w-1/2 h-60 object-cover rounded-lg shadow-md"
+                  />
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-white mb-3">Type</h2>
+                    <p className="text-gray-300 leading-relaxed">
+                      {selectedProject.category || "N/A"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
