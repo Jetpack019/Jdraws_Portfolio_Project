@@ -68,7 +68,7 @@ function Thesis() {
         </div>
 
         <div className="flex flex-col mr-10">
-          <div className="relative z-10  lg:w-1/2 mt-10 lg:mt-0 mb-10">
+          <div className="relative z-10 lg:w-1/2 mt-10 lg:mt-0 mb-10">
             <Swiper
               modules={[Navigation, Pagination]}
               spaceBetween={10}
@@ -120,7 +120,7 @@ function Thesis() {
                         className="h-60 w-full object-cover duration-500 
                                group-hover:scale-105"
                       />
-                      {/* Overlay */}
+
                       <div
                         className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent 
                                flex items-end justify-center opacity-0 group-hover:opacity-100 
