@@ -12,7 +12,6 @@ function Thesis() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.thesis);
   const [showDeviceImages, setShowDeviceImages] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     dispatch(fetchThesis());
