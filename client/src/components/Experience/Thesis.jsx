@@ -6,8 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { fetchThesis } from "../../store/thesisSlice";
-import { motion, AnimatePresence } from "framer-motion";
-import { Usb } from "lucide-react";
+
 import ToggleDeviceButton from "./Button/ToggleDeviceButton";
 function Thesis() {
   const dispatch = useDispatch();
