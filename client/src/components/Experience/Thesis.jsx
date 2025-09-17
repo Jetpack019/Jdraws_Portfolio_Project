@@ -27,14 +27,14 @@ function Thesis() {
     return <p className="text-white text-center mt-10">No data found.</p>;
 
   return (
-    <section className="m-40">
+    <section className="m-40 ">
       <div
-        className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col lg:flex-row items-center justify-between px-10 py-20 text-white"
+        className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col lg:flex-row items-center justify-between px-10 py-20 text-white "
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url(${items.bg_image})`,
         }}
       >
-        <div className="relative z-10 flex-1  max-w-2xl">
+        <div className="relative z-10 flex-1  max-w-2xl ml-10">
           <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow mb-20">
             {items.head_title}
           </h1>
@@ -67,7 +67,7 @@ function Thesis() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mr-10">
           <div className="relative z-10  lg:w-1/2 mt-10 lg:mt-0 mb-10">
             <Swiper
               modules={[Navigation, Pagination]}
@@ -99,7 +99,6 @@ function Thesis() {
             setShowDeviceImages={setShowDeviceImages}
           />
 
-          {/* Device Images Swiper */}
           {showDeviceImages && (
             <div className="relative z-10 lg:w-1/2 mt-6 animate-fadeIn">
               <Swiper

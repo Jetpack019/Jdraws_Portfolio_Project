@@ -53,7 +53,7 @@ function ToggleDeviceButton({ showDeviceImages, setShowDeviceImages }) {
               <motion.span
                 key={i}
                 variants={letter}
-                className="text-xs font-medium text-gray-500"
+                className="text-xs font-medium text-gray-100"
               >
                 {char}
               </motion.span>
