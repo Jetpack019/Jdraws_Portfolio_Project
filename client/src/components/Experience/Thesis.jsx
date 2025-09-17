@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -6,10 +6,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { fetchThesis } from "../../store/thesisSlice";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { Usb } from "lucide-react";
+import ToggleDeviceButton from "./Button/ToggleDeviceButton";
 function Thesis() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.thesis);
+  const [showDeviceImages, setShowDeviceImages] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     dispatch(fetchThesis());
@@ -63,31 +67,76 @@ function Thesis() {
           </div>
         </div>
 
-        <div className="relative z-10  lg:w-1/2 mt-10 lg:mt-0">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={10}
-            slidesPerView={1}
-            navigation
-            className="w-100 "
-          >
-            {items.images.map((img, i) => (
-              <SwiperSlide key={i}>
-                <div className="relative group rounded-xl overflow-hidden shadow ">
-                  <img
-                    src={img}
-                    alt={`Internship-${i}`}
-                    className=" h-100 object-cover duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                    <span className="text-white text-sm font-medium">
-                      Internship Project {i + 1}
-                    </span>
+        <div className="flex flex-col">
+          <div className="relative z-10  lg:w-1/2 mt-10 lg:mt-0 mb-10">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={10}
+              slidesPerView={1}
+              navigation
+              className="w-80 "
+            >
+              {items.images_device.map((img, i) => (
+                <SwiperSlide key={i}>
+                  <div className="relative group rounded-xl overflow-hidden shadow ">
+                    <img
+                      src={img}
+                      alt={`Internship-${i}`}
+                      className="object-cover duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <span className="text-white text-sm font-medium">
+                        Application Image {i + 1}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <ToggleDeviceButton
+            showDeviceImages={showDeviceImages}
+            setShowDeviceImages={setShowDeviceImages}
+          />
+
+          {/* Device Images Swiper */}
+          {showDeviceImages && (
+            <div className="relative z-10 lg:w-1/2 mt-6 animate-fadeIn">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={16}
+                slidesPerView={1}
+                navigation
+                className="w-80"
+              >
+                {items.images.map((img, i) => (
+                  <SwiperSlide key={i}>
+                    <div
+                      className="relative group rounded-xl overflow-hidden shadow-lg 
+                             bg-white/5 backdrop-blur-md border border-white/10"
+                    >
+                      <img
+                        src={img}
+                        alt={`Device-${i}`}
+                        className="h-60 w-full object-cover duration-500 
+                               group-hover:scale-105"
+                      />
+                      {/* Overlay */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent 
+                               flex items-end justify-center opacity-0 group-hover:opacity-100 
+                               transition duration-500"
+                      >
+                        <span className="text-white text-sm font-medium p-3">
+                          Device Image {i + 1}
+                        </span>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          )}
         </div>
       </div>
     </section>
