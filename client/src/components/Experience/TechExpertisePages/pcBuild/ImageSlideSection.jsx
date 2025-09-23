@@ -57,7 +57,6 @@ function ImageSlideSection() {
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
 
-      {/* Custom Hover Toggle Button */}
       <motion.button
         onClick={toggleGrid}
         className="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 z-40 opacity-0 group-hover:opacity-100 transition"
@@ -69,7 +68,6 @@ function ImageSlideSection() {
         <ChevronLeft className="h-15 w-15 text-white bg-black/40 hover:bg-black/60 rounded-full p-3 cursor-pointer" />
       </motion.button>
 
-      {/* Grid Overlay */}
       <AnimatePresence>
         {isGridVisible && (
           <motion.div
@@ -83,8 +81,8 @@ function ImageSlideSection() {
               modules={[Grid, Pagination]}
               pagination={{ clickable: true }}
               spaceBetween={16}
-              slidesPerView={4} // Sets the number of columns to 4
-              grid={{ rows: 2, fill: "row" }} // Sets the number of rows to 2
+              slidesPerView={4}
+              grid={{ rows: 2, fill: "row" }}
               className="w-full h-full p-8"
             >
               {imageSources.map((src, index) => (
