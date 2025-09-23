@@ -3,13 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Pagination } from "swiper/modules";
+import { useSelector } from "react-redux";
 
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
 
-function ImageSlideSection() {
+function ImageSlideSection({ buildKey }) {
   const [isGridVisible, setIsGridVisible] = useState(false);
+  const { items } = useSelector((state) => state.pcBuild);
 
   const toggleGrid = () => {
     setIsGridVisible(!isGridVisible);
@@ -33,26 +35,14 @@ function ImageSlideSection() {
     exit: { right: 0 },
   };
 
-  const imageSources = [
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1528652251036-7c98031d2757?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1508920557458-750d4050d287?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1528652251036-7c98031d2757?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1508920557458-750d4050d287?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1528652251036-7c98031d2757?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1508920557458-750d4050d287?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1528652251036-7c98031d2757?auto=format&fit=crop&w=500&q=60",
-    "https://images.unsplash.com/photo-1508920557458-750d4050d287?auto=format&fit=crop&w=500&q=60",
-  ];
+  const currentBuild = items?.[buildKey];
+  const parts = currentBuild?.parts || [];
 
   return (
     <div
       className="h-[80vh] relative bg-cover bg-center bg-no-repeat flex items-center justify-between px-10 py-20 text-white group"
       style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1500&q=80')`,
+        backgroundImage: `url(${currentBuild?.image || ""})`,
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
@@ -85,16 +75,23 @@ function ImageSlideSection() {
               grid={{ rows: 2, fill: "row" }}
               className="w-full h-full p-8"
             >
-              {imageSources.map((src, index) => (
+              {parts.map((part, index) => (
                 <SwiperSlide key={index}>
-                  <motion.img
-                    src={src}
-                    alt={`Grid Image ${index + 1}`}
-                    className="w-full h-full object-cover rounded-lg shadow-lg"
+                  <motion.div
+                    className="flex flex-col items-center"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                  />
+                  >
+                    <img
+                      src={part.imgSrc}
+                      alt={part.description}
+                      className="w-28 h-28 object-contain rounded-lg shadow-lg"
+                    />
+                    <p className="text-sm text-gray-300 mt-2 text-center">
+                      {part.description}
+                    </p>
+                  </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>

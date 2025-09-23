@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-function ExpandingButton({ icon: Icon, button1, button2 }) {
+
+function ExpandingButton({ icon: Icon, button1, button2, onClick1, onClick2 }) {
   const [showButtons, setShowButtons] = useState(false);
 
   const buttonVariants = {
@@ -8,6 +9,17 @@ function ExpandingButton({ icon: Icon, button1, button2 }) {
     visible: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -50 },
   };
+
+  const handleButton1Click = () => {
+    onClick1();
+    setShowButtons(false);
+  };
+
+  const handleButton2Click = () => {
+    onClick2();
+    setShowButtons(false);
+  };
+
   return (
     <div className="flex items-center space-x-4">
       <motion.button
@@ -18,13 +30,14 @@ function ExpandingButton({ icon: Icon, button1, button2 }) {
                    focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50
                    transition-all duration-300 ease-in-out cursor-pointer"
       >
-        <Icon size={24} />
+        {Icon ? <Icon size={24} /> : null}
       </motion.button>
 
       <AnimatePresence>
         {showButtons && (
           <>
             <motion.button
+              onClick={handleButton1Click}
               variants={buttonVariants}
               initial="hidden"
               animate="visible"
@@ -39,6 +52,7 @@ function ExpandingButton({ icon: Icon, button1, button2 }) {
             </motion.button>
 
             <motion.button
+              onClick={handleButton2Click}
               variants={buttonVariants}
               initial="hidden"
               animate="visible"
