@@ -8,6 +8,7 @@ import annotationReducer from "./annotationSlice";
 import thesisReducer from "./thesisSlice";
 import techExpertiseReducer from "./techExpertiseSlice";
 import pcBuildReducer from "././techexpertisepages/pcBuildSlice";
+import HardwareRepairReducer from "././techexpertisepages/hardwareRepairSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     thesis: thesisReducer,
     techExpertise: techExpertiseReducer,
     pcBuild: pcBuildReducer,
+    hardwareRepair: HardwareRepairReducer,
   },
 });
 
