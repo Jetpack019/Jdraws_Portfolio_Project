@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ExpandingButton from "../Button/ExpandingButton";
-import { Computer } from "lucide-react";
+import { ChevronLeft, Computer } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPCBuild } from "../../../store/techexpertisepages/pcBuildSlice";
+import { ChevronRight } from "lucide-react";
+import ImageSlideSection from "./pcBuild/ImageSlideSection";
+
 function PCBuildPage() {
+  const dispatch = useDispatch();
+  const { items, isLoading, error } = useSelector((state) => state.pcBuild);
+
+  useEffect(() => {
+    dispatch(fetchPCBuild());
+  }, [dispatch]);
+
+  if (isLoading)
+    return <p className="text-white text-center mt-10">Loading...</p>;
+  if (error)
+    return <p className="text-red-500 text-center mt-10">Error: {error}</p>;
+  if (!items)
+    return <p className="text-white text-center mt-10">No data found.</p>;
+
   return (
     <div className="m-40 ">
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-5">
         <ExpandingButton
           icon={Computer}
           button1="PC 1 BUILD"
@@ -14,6 +33,7 @@ function PCBuildPage() {
           Upgrade
         </button>
       </div>
+      <ImageSlideSection />
     </div>
   );
 }
