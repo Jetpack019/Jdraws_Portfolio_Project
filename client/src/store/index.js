@@ -6,6 +6,7 @@ import experienceReducer from "./experienceSlice";
 import internshipReducer from "./internshipSlice";
 import annotationReducer from "./annotationSlice";
 import thesisReducer from "./thesisSlice";
+import techExpertiseReducer from "./techExpertiseSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     internship: internshipReducer,
     annotation: annotationReducer,
     thesis: thesisReducer,
+    techExpertise: techExpertiseReducer,
   },
 });
 
