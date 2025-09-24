@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHardwareRepair } from "../../../store/techexpertisepages/hardwareRepairSlice";
 import { motion } from "framer-motion";
-import { Wrench } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, EffectCards } from "swiper/modules";
 
@@ -11,39 +10,43 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
 
-// A reusable component for each hardware repair card
 const HardwareRepairCard = ({ item }) => {
   return (
     <motion.div
-      className="bg-zinc-800 rounded-xl p-6 shadow-2xl hover:shadow-cyan-500/30 transition-shadow duration-300"
+      className="bg-zinc-800 rounded-xl p-6 shadow-2xl hover:shadow-blue-500/30 transition-shadow duration-300 flex flex-col h-full"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
       <div className="flex items-center gap-4 mb-4">
-        <Wrench className="h-8 w-8 text-cyan-500" />
+        <span
+          className="h-8 w-8 text-blue-500"
+          dangerouslySetInnerHTML={{ __html: item.icon }}
+        />
         <h3 className="text-2xl font-bold text-white tracking-wide">
           {item.title}
         </h3>
       </div>
-      <p className="text-zinc-300 mb-6 leading-relaxed text-sm lg:text-base">
+
+      <p className="text-zinc-300 mb-6 leading-relaxed text-sm lg:text-base flex-grow">
         {item.description}
       </p>
+
       {item.img && item.img.length > 0 && (
         <Swiper
           modules={[Pagination, Autoplay, EffectCards]}
-          effect={"cards"}
+          effect="cards"
           grabCursor={true}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className="rounded-lg h-64 lg:h-80 w-full"
+          className="rounded-lg w-full h-52 md:h-64 lg:h-72 mt-auto"
         >
           {item.img.map((image, index) => (
             <SwiperSlide key={index}>
               <img
                 src={image}
                 alt={`${item.title} image ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-lg"
               />
             </SwiperSlide>
           ))}
@@ -53,7 +56,6 @@ const HardwareRepairCard = ({ item }) => {
   );
 };
 
-// Main page component
 function HardwareRepairPage() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(
@@ -68,9 +70,7 @@ function HardwareRepairPage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -88,7 +88,24 @@ function HardwareRepairPage() {
         transition={{ duration: 0.5 }}
       >
         <div className="flex flex-col items-center">
-          <Wrench className="h-16 w-16 text-cyan-500 animate-spin" />
+          <span className="h-16 w-16 text-blue-500 animate-spin">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-wrench"
+            >
+              <path d="M14.7 6.3a1 1 0 0 0-1.4 0L11 8.59l1.41 1.41L14.7 7.7a1 1 0 0 0 0-1.4z" />
+              <path d="M20.71 4.29a1 1 0 0 0-1.42 0L16 7.59l1.41 1.41 3.29-3.29a1 1 0 0 0 0-1.42z" />
+              <path d="M6.34 17.66a8 8 0 0 1 11.32-11.32" />
+            </svg>
+          </span>
           <p className="mt-4 text-xl">Loading...</p>
         </div>
       </motion.div>
@@ -133,13 +150,13 @@ function HardwareRepairPage() {
       </header>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {items.map((item, index) => (
-          <motion.div key={item.id} variants={itemVariants}>
+        {items.map((item) => (
+          <motion.div key={item.id} variants={itemVariants} className="h-full">
             <HardwareRepairCard item={item} />
           </motion.div>
         ))}
