@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSoftwareTroubleshoot } from "../../../store/techexpertisepages/softwareTroubleshoot";
-import { motion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShieldCheck, X } from "lucide-react";
 
 function SoftwareTroubleshootPage() {
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(
     (state) => state.softwareTroubleshoot
   );
+
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     dispatch(fetchSoftwareTroubleshoot());
@@ -36,7 +38,7 @@ function SoftwareTroubleshootPage() {
     );
 
   return (
-    <div className="bg-zinc-900 min-h-screen p-8 lg:p-16">
+    <div className="bg-black min-h-screen p-8 lg:p-16">
       <header className="text-center mb-12">
         <motion.h1
           className="text-4xl lg:text-6xl font-extrabold text-white mb-2"
@@ -72,16 +74,17 @@ function SoftwareTroubleshootPage() {
         {items.map((item) => (
           <motion.div
             key={item.id}
-            className="bg-zinc-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition duration-300 overflow-hidden flex flex-col"
+            className="bg-zinc-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition duration-300 overflow-hidden flex flex-col cursor-pointer"
             variants={{
               hidden: { opacity: 0, y: 40 },
               visible: { opacity: 1, y: 0 },
             }}
+            onClick={() => setSelectedImage(item.img)}
           >
             <img
               src={item.img}
               alt={item.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-cover hover:scale-105 transition-transform"
             />
             <div className="p-6 flex flex-col flex-grow">
               <div className="flex items-center gap-3 mb-3">
@@ -95,6 +98,37 @@ function SoftwareTroubleshootPage() {
           </motion.div>
         ))}
       </motion.div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button
+              className="absolute top-20 right-40 bg-zinc-800 p-2 rounded-full text-white hover:bg-zinc-700 z-50"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <motion.div
+              className="relative max-w-5xl max-h-[90vh] w-full flex justify-center items-center p-4"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+            >
+              <img
+                src={selectedImage}
+                alt="Full Resolution"
+                className="max-w-full max-h-[85vh] rounded-lg shadow-lg"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
