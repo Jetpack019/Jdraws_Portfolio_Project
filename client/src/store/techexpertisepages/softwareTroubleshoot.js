@@ -3,7 +3,7 @@ export const fetchSoftwareTroubleshoot = createAsyncThunk(
   "SoftwareTroubleshoot/fetchSoftwareTroubleshoot ",
   async () => {
     const response = await fetch(
-      "https://raw.githubusercontent.com/Jetpack019/My_Custom_APIs/refs/heads/main/experience/techExpertise/pc_parts_upgrade.json"
+      "https://raw.githubusercontent.com/Jetpack019/My_Custom_APIs/refs/heads/main/experience/techExpertise/software_troubleshoot.json"
     );
     if (!response.ok) {
       throw new Error("Failed to fetch thesis");
