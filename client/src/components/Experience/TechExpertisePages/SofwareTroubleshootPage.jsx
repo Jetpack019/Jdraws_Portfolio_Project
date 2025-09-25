@@ -108,7 +108,7 @@ function SoftwareTroubleshootPage() {
             exit={{ opacity: 0 }}
           >
             <button
-              className="absolute top-20 right-40 bg-zinc-800 p-2 rounded-full text-white hover:bg-zinc-700 z-50"
+              className="absolute top-3 right-3 bg-zinc-800 p-2 rounded-full text-white hover:bg-zinc-700 z-50"
               onClick={() => setSelectedImage(null)}
             >
               <X className="w-6 h-6" />
