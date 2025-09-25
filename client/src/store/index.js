@@ -9,7 +9,7 @@ import thesisReducer from "./thesisSlice";
 import techExpertiseReducer from "./techExpertiseSlice";
 import pcBuildReducer from "././techexpertisepages/pcBuildSlice";
 import HardwareRepairReducer from "././techexpertisepages/hardwareRepairSlice";
-
+import SoftwareTroubleshootReducer from "././techexpertisepages/softwareTroubleshoot";
 const store = configureStore({
   reducer: {
     projects: projectsReducer,
@@ -22,6 +22,7 @@ const store = configureStore({
     techExpertise: techExpertiseReducer,
     pcBuild: pcBuildReducer,
     hardwareRepair: HardwareRepairReducer,
+    softwareTroubleshoot: SoftwareTroubleshootReducer,
   },
 });
 
