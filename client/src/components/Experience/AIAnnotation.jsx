@@ -18,7 +18,7 @@ function AIAnnotation() {
   if (!items) return <p className="text-white">No experience found.</p>;
 
   return (
-    <section className="p-10min-h-screen">
+    <section className="p-10 min-h-screen">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
