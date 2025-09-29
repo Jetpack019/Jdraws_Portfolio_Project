@@ -7,10 +7,12 @@ import { Outlet } from "react-router-dom";
 function Homepage() {
   return (
     <>
-      <Outlet />
-      <HeroSection />
-      <ProjectList />
-      <DesignList />
+      <div className="space-y-50 bg-black">
+        <Outlet />
+        <HeroSection />
+        <ProjectList />
+        <DesignList />
+      </div>
     </>
   );
 }

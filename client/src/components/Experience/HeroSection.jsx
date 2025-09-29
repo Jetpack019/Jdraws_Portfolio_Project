@@ -32,7 +32,7 @@ function HeroSection() {
   const activeContent = items[activeIndex];
 
   return (
-    <section className="w-full min-h-[100vh] flex flex-col lg:flex-row mx-auto px-10 py-20 items-center gap-10">
+    <section className="w-full min-h-[100vh] flex flex-col lg:flex-row mx-auto px-10 py-20 items-center gap-10 bg-white">
       <div className="flex-1 flex justify-center">
         <AnimatePresence mode="wait">
           <motion.img

@@ -25,7 +25,7 @@ function TechExpertise() {
     );
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen py-24 px-6 md:px-12">
+    <div className=" min-h-screen py-24 px-6 md:px-12">
       <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-center mb-16 drop-shadow-lg">
         Tech Expertise
       </h1>

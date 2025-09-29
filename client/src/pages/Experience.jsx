@@ -10,7 +10,7 @@ import TechExpertise from "../components/Experience/TechExpertise";
 
 function Experience() {
   return (
-    <div className="space-y-50 bg-black">
+    <div className="space-y-50 bg-gradient-to-br from-gray-900 to-black">
       <Outlet />
       <HeroSection />
       <AIAnnotation />

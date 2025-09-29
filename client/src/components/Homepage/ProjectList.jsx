@@ -19,7 +19,7 @@ function ProjectList() {
     return <p className="text-red-500">Error loading projects: {error}</p>;
 
   return (
-    <div className="bg-black min-h-screen p-6">
+    <div className="min-h-screen p-6">
       <div className="flex gap-4 mb-10 justify-center">
         {["website", "mobile"].map((tab) => (
           <button

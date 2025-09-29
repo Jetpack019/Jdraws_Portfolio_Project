@@ -37,7 +37,7 @@ function Designs() {
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
-    <section className="text-white p-6 bg-black">
+    <section className="text-white p-6 ">
       <div className="relative inline-block text-left mb-6">
         <button
           onClick={() => setOpen(!open)}
