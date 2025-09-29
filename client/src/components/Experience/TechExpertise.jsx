@@ -45,15 +45,9 @@ function TechExpertise() {
                        bg-gray-800 border-2 border-gray-700 hover:border-blue-500 shadow-2xl hover:shadow-blue-500/30"
           >
             <div
-              className="w-36 h-36 p-4 rounded-full flex items-center justify-center mb-6 
-                          bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 ring-4 ring-blue-500/30"
-            >
-              <img
-                src={expertise.image}
-                alt={expertise.title}
-                className="w-24 h-24 object-contain filter drop-shadow-lg"
-              />
-            </div>
+              className="w-36 h-36 mb-6 rounded-full bg-center bg-cover  shadow-lg"
+              style={{ backgroundImage: `url(${expertise.image})` }}
+            ></div>
 
             <h2 className="text-2xl font-bold text-white mb-3">
               {expertise.title}
