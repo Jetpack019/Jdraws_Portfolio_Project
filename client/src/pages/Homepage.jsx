@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 function Homepage() {
   return (
     <>
-      <div className="space-y-50 bg-black">
+      <div className="space-y-50 bg-gradient-to-br from-gray-900 to-blackspace-y-50 bg-black">
         <Outlet />
         <HeroSection />
         <ProjectList />
