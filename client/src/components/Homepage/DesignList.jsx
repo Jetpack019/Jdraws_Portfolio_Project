@@ -16,52 +16,27 @@ function DesignList() {
   if (error)
     return <p className="text-red-500">Error loading projects: {error}</p>;
 
+  const tabs = ["Mockups", "Infographics", "Icons and Logo", "3D Model"];
+
   return (
-    <div className="bg-black min-h-screen p-6">
-      <div className="flex gap-4 mb-6">
-        <button
-          onClick={() => setActiveTab("Mockups")}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            activeTab === "Mockups"
-              ? "bg-[#00B2FF] text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-          }`}
-        >
-          Mockups
-        </button>
-        <button
-          onClick={() => setActiveTab("Infographics")}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            activeTab === "mobile"
-              ? "bg-[#00B2FF] text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-          }`}
-        >
-          Infographics
-        </button>
-        <button
-          onClick={() => setActiveTab("Icons and Logo")}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            activeTab === "mobile"
-              ? "bg-[#00B2FF] text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-          }`}
-        >
-          Icons and Logo
-        </button>
-        <button
-          onClick={() => setActiveTab("3D Model")}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            activeTab === "mobile"
-              ? "bg-[#00B2FF] text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-          }`}
-        >
-          3D Model
-        </button>
+    <div className=" min-h-screen p-4 sm:p-6">
+      <div className="flex flex-wrap gap-3 mb-6 justify-center">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 py-2 rounded-lg transition-all text-sm sm:text-base cursor-pointer ${
+              activeTab === tab
+                ? "bg-[#00B2FF] text-white shadow-lg"
+                : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {items[activeTab]?.map((design) => (
           <div
             key={design.id}
@@ -74,10 +49,8 @@ function DesignList() {
           >
             <div className="absolute inset-0 bg-black/60"></div>
 
-            <div className="relative p-5 flex flex-col justify-between h-64">
-              <div>
-                <h3 className="text-xl font-bold mb-2">{design.title}</h3>
-              </div>
+            <div className="relative p-5 flex flex-col justify-end h-64 sm:h-72 md:h-80">
+              <h3 className="text-lg sm:text-xl font-bold">{design.title}</h3>
             </div>
           </div>
         ))}

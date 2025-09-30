@@ -33,7 +33,7 @@ function HeroSection() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between p-8 md:p-16 bg-gradient-to-br from-gray-900 to-black text-white min-h-screen">
+    <section className="flex flex-col md:flex-row items-center justify-between p-8 md:p-16 text-white min-h-screen">
       {item && (
         <>
           <div className="flex-1 text-center md:text-left space-y-5 md:space-y-6 order-2 md:order-1 pt-10 md:pt-0">
@@ -77,7 +77,7 @@ function HeroSection() {
               custom={4}
               className="flex justify-center md:justify-start space-x-4 mt-6"
             >
-              <a href="#projects" className="inline-flex items-center">
+              <a href="/experience" className="inline-flex items-center">
                 <button className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-full font-medium flex items-center gap-2 transition">
                   <FolderGit2 size={18} /> View Projects
                 </button>
@@ -96,7 +96,7 @@ function HeroSection() {
 
           <div className="flex-1 flex justify-center order-1 md:order-2">
             <div
-              className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden 
+              className="relative w-64 h-64 md:w-100 md:h-100 rounded-full overflow-hidden 
                          shadow-2xl"
             >
               <div className="rounded-full w-full h-full overflow-hidden bg-black">
