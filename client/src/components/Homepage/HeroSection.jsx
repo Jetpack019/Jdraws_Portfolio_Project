@@ -62,12 +62,12 @@ function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={3}
-              className="text-gray-400 max-w-xl leading-relaxed sm:text-lg"
+              className="text-white max-w-xl leading-relaxed sm:text-lg"
             >
               Passionate about building beautiful, responsive, and user-friendly
-              web applications. I focus on <strong>ReactJS</strong>,
-              <strong>TailwindCSS</strong>, and modern web practices to bring
-              ideas to life.
+              web applications. I focus on
+              <strong className="text-gray-300"> ReactJS, TailwindCSS</strong>,
+              and modern web practices to bring ideas to life.
             </motion.p>
 
             <motion.div
