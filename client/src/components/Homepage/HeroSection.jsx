@@ -65,7 +65,7 @@ function HeroSection() {
               className="text-gray-400 max-w-xl leading-relaxed sm:text-lg"
             >
               Passionate about building beautiful, responsive, and user-friendly
-              web applications. I focus on <strong>ReactJS</strong>,{" "}
+              web applications. I focus on <strong>ReactJS</strong>,
               <strong>TailwindCSS</strong>, and modern web practices to bring
               ideas to life.
             </motion.p>
