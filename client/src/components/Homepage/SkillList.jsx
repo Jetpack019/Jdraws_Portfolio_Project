@@ -44,12 +44,7 @@ function SkillList() {
   };
 
   return (
-    <div className="w-full min-h-screen py-20 flex flex-col items-center justify-start bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-500 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
-      </div>
-
+    <div className="w-full min-h-screen py-20 flex flex-col items-center justify-start relative overflow-hidden">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,36 +104,67 @@ function SkillList() {
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedSkill(skill)}
               className="flex flex-col items-center justify-center 
-                         w-full max-w-36 h-36 md:max-w-40 md:h-40 
-                         p-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl 
-                         shadow-2xl border border-gray-700/50 
-                         cursor-pointer transition-all duration-300 ease-out
-                         relative overflow-hidden group"
+             w-36 h-36 md:w-40 md:h-40 
+             p-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full 
+             shadow-2xl border border-gray-700/50 
+             cursor-pointer transition-all duration-300 ease-out
+             relative overflow-hidden group"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gray-700">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{
-                    delay: 0.3 + i * 0.05,
-                    duration: 0.8,
-                    ease: "easeOut",
-                  }}
-                />
+              <div className="absolute top-0 left-0 w-full h-full">
+                <svg
+                  className="w-full h-full transform -rotate-90"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="rgba(55, 65, 81, 0.5)"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+
+                  <motion.circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="url(#gradient)"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: skill.level / 100 }}
+                    transition={{
+                      delay: 0.3 + i * 0.05,
+                      duration: 0.8,
+                      ease: "easeOut",
+                    }}
+                  />
+                  <defs>
+                    <linearGradient
+                      id="gradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#06b6d4" />
+                      <stop offset="100%" stopColor="#3b82f6" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
 
               <i
-                className={`${skill.icon} text-4xl md:text-5xl mb-2 relative z-10 group-hover:scale-110 transition-transform duration-300`}
+                className={`${skill.icon} text-3xl md:text-4xl mb-2 relative z-10 group-hover:scale-110 transition-transform duration-300`}
               ></i>
-              <span className="text-gray-200 text-sm md:text-base font-semibold text-center mt-1 relative z-10">
+              <span className="text-gray-200 text-sm font-semibold text-center relative z-10">
                 {skill.name}
               </span>
 
-              {/* Skill Level Badge */}
-              <div className="absolute bottom-2 right-2 bg-gray-800/80 text-cyan-300 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
+              <div className=" bottom-3 right-3 bg-gray-800/80 text-cyan-300 text-xs px-2 py-1 rounded-full backdrop-blur-sm">
                 {skill.level}%
               </div>
             </motion.div>
