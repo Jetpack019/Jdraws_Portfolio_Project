@@ -43,7 +43,7 @@ function ProjectList() {
             onClick={() => setSelectedProject(project)}
             className="relative bg-gray-900 text-white rounded-2xl overflow-hidden shadow-lg hover:scale-[1.03] transition-transform duration-500 cursor-pointer group"
             style={{
-              backgroundImage: `url(${project.image1})`,
+              backgroundImage: `url(${project.images[0]})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -80,10 +80,10 @@ function ProjectList() {
             <p className="text-gray-300 mb-6">{selectedProject.description}</p>
 
             <img
-              src={selectedProject.image1}
+              src={selectedProject.images[0]} // first image as preview
               alt={selectedProject.title}
               className="w-full h-72 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-[1.02] transition"
-              onClick={() => setSelectedImage(selectedProject.image1)}
+              onClick={() => setSelectedImage(selectedProject.images[0])}
             />
           </div>
         </div>
@@ -114,25 +114,19 @@ function ProjectList() {
             {selectedProject.title}
           </h2>
 
-          <div className="flex flex-row gap-10  md:w-3/4 lg:w-2/3 overflow-y-auto h-[75vh] p-8 rounded-2xl bg-gray-900/40 shadow-2xl border border-gray-700/40">
-            {[
-              selectedProject.image1,
-              selectedProject.image2,
-              selectedProject.image3,
-            ]
-              .filter(Boolean)
-              .map((img, idx) => (
-                <div
-                  key={idx}
-                  className="w-full flex justify-center items-center"
-                >
-                  <img
-                    src={img}
-                    alt={`project-${idx}`}
-                    className="max-h-[65vh] w-auto rounded-xl shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-500"
-                  />
-                </div>
-              ))}
+          <div className="flex flex-row gap-10 md:w-3/4 lg:w-2/3 overflow-y-auto h-[75vh] p-8 rounded-2xl bg-gray-900/40 shadow-2xl border border-gray-700/40">
+            {selectedProject.images.map((img, idx) => (
+              <div
+                key={idx}
+                className="w-full flex justify-center items-center"
+              >
+                <img
+                  src={img}
+                  alt={`project-${idx}`}
+                  className="max-h-[65vh] w-auto rounded-xl shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-500"
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}
