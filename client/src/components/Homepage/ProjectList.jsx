@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProjects } from "../../store/projectsSlice";
 import { X } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function ProjectList() {
   const dispatch = useDispatch();
@@ -109,24 +114,35 @@ function ProjectList() {
               <X size={32} />
             </button>
           </div>
-
           <h2 className="text-[#00B2FF] text-3xl font-bold mt-20 mb-8 tracking-wider text-center drop-shadow-lg">
             {selectedProject.title}
           </h2>
 
-          <div className="flex flex-row gap-10 md:w-3/4 lg:w-2/3 overflow-y-auto h-[75vh] p-8 rounded-2xl bg-gray-900/40 shadow-2xl border border-gray-700/40">
-            {selectedProject.images.map((img, idx) => (
-              <div
-                key={idx}
-                className="w-full flex justify-center items-center"
-              >
-                <img
-                  src={img}
-                  alt={`project-${idx}`}
-                  className="max-h-[65vh] w-auto rounded-xl shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-500"
-                />
-              </div>
-            ))}
+          <div className="flex flex-col gap-5 w-full md:w-3/4 h-auto p-4 md:p-8 rounded-2xl bg-gray-900/40 shadow-2xl border border-gray-700/40 overflow-visible">
+            <Swiper
+              modules={[Navigation, Pagination, Keyboard]}
+              navigation
+              keyboard={{ enabled: true }}
+              spaceBetween={20}
+              slidesPerView={1}
+              breakpoints={{
+                768: { slidesPerView: 2, spaceBetween: 30 },
+              }}
+              className="lg:w-2/3 h-[60vh] rounded-2xl w-full"
+            >
+              {selectedProject.images.map((img, idx) => (
+                <SwiperSlide
+                  key={idx}
+                  className="flex justify-center items-center content-center"
+                >
+                  <img
+                    src={img}
+                    alt={`project-${idx}`}
+                    className="w-full h-full object-contain rounded-xl shadow-lg hover:scale-[1.03] hover:shadow-2xl transition-all duration-500"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       )}
