@@ -36,7 +36,7 @@ function ContactForm() {
           </h2>
 
           <form
-            action="https://formsubmit.co/jadebanag19@email.com"
+            action="https://formsubmit.co/banagjadeross@email.com"
             method="POST"
             className="space-y-5"
           >
