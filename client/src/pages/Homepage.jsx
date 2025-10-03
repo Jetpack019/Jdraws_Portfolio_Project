@@ -4,6 +4,7 @@ import ProjectList from "../components/Homepage/ProjectList";
 import DesignList from "../components/Homepage/DesignList";
 import { Outlet } from "react-router-dom";
 import SkillList from "../components/Homepage/SkillList";
+import Certificate from "../components/Homepage/Certificate";
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
         <SkillList />
         <ProjectList />
         <DesignList />
+        <Certificate />
       </div>
     </>
   );

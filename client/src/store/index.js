@@ -10,6 +10,7 @@ import techExpertiseReducer from "./techExpertiseSlice";
 import pcBuildReducer from "././techexpertisepages/pcBuildSlice";
 import HardwareRepairReducer from "././techexpertisepages/hardwareRepairSlice";
 import SoftwareTroubleshootReducer from "././techexpertisepages/softwareTroubleshoot";
+import CertificationReducer from "./certificateSlice";
 const store = configureStore({
   reducer: {
     projects: projectsReducer,
@@ -23,6 +24,7 @@ const store = configureStore({
     pcBuild: pcBuildReducer,
     hardwareRepair: HardwareRepairReducer,
     softwareTroubleshoot: SoftwareTroubleshootReducer,
+    certification: CertificationReducer,
   },
 });
 
