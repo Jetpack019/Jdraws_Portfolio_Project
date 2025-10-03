@@ -9,7 +9,7 @@ const skills = {
     { name: "Tailwind", icon: "devicon-tailwindcss-plain colored", level: 95 },
     { name: "HTML", icon: "devicon-html5-plain colored", level: 95 },
     { name: "JavaScript", icon: "devicon-javascript-plain colored", level: 88 },
-    { name: "SCSS", icon: "devicon-sass-original colored", level: 75 },
+    { name: "SASS", icon: "devicon-sass-original colored", level: 75 },
     { name: "Vite", icon: "devicon-vite-original colored", level: 85 },
   ],
   basic: [

@@ -42,9 +42,9 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <a href="#contact" className={staticLinkClass}>
+            <NavLink to="/contact" className={linkClass}>
               Contact
-            </a>
+            </NavLink>
           </li>
           <li>
             <a

@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage";
 import Experience from "./pages/Experience";
 import Navbar from "./components/Navbar";
 
+import Contact from "./pages/Contact";
+
 function Layout() {
   return (
     <>
@@ -20,6 +22,7 @@ function App() {
       children: [
         { index: true, element: <Homepage /> },
         { path: "experience", element: <Experience /> },
+        { path: "contact", element: <Contact /> },
       ],
     },
   ]);
