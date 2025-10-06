@@ -17,7 +17,6 @@ function Experience() {
       <HandsOn />
       <Thesis />
 
-      {/* 🔹 This Outlet is where TechExpertise (and its children) will load */}
       <Outlet />
     </div>
   );
