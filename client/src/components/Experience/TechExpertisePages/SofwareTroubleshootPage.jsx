@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSoftwareTroubleshoot } from "../../../store/techexpertisepages/softwareTroubleshoot";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function SoftwareTroubleshootPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(
     (state) => state.softwareTroubleshoot
@@ -39,6 +41,12 @@ function SoftwareTroubleshootPage() {
 
   return (
     <div className="bg-black min-h-screen p-8 lg:p-16">
+      <button
+        onClick={() => navigate("/experience")}
+        className="mb-10 px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all shadow-md cursor-pointer"
+      >
+        ← Back
+      </button>
       <header className="text-center mb-12">
         <motion.h1
           className="text-4xl lg:text-6xl font-extrabold text-white mb-2"

@@ -6,6 +6,7 @@ import HandsOn from "../components/Experience/HandsOn";
 import Thesis from "../components/Experience/Thesis";
 import Designs from "../components/Experience/Designs";
 import { Outlet } from "react-router-dom";
+import TechExpertise from "../components/Experience/TechExpertise";
 
 function Experience() {
   return (
@@ -16,8 +17,7 @@ function Experience() {
       <Designs />
       <HandsOn />
       <Thesis />
-
-      <Outlet />
+      <TechExpertise />
     </div>
   );
 }

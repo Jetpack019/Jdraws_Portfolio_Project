@@ -43,7 +43,7 @@ function TechExpertise() {
 
           console.log("Resolved route:", expertise.title, "→", route);
           return (
-            <Link key={expertise.id} to={`/experience/tech-expertise/${route}`}>
+            <Link to={`/experience/tech-expertise/${route}`}>
               <motion.div
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}

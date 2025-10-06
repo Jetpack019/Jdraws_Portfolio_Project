@@ -4,8 +4,10 @@ import { Computer } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPCBuild } from "../../../store/techexpertisepages/pcBuildSlice";
 import ImageSlideSection from "./pcBuild/ImageSlideSection";
+import { useNavigate } from "react-router-dom";
 
 function PCBuildPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector((state) => state.pcBuild);
 
@@ -34,11 +36,16 @@ function PCBuildPage() {
     } else if (selectedBuild === "pc1_upgrade") {
       setSelectedBuild("pc1");
     }
-    // 👉 do nothing if it's pc2 (no upgrade for pc2)
   };
 
   return (
     <div className="m-40">
+      <button
+        onClick={() => navigate("/experience")}
+        className="mb-10 px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all shadow-md cursor-pointer"
+      >
+        ← Back
+      </button>
       <div className="flex justify-between mb-5">
         <ExpandingButton
           icon={Computer}

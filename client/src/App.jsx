@@ -24,28 +24,24 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
+        // ✅ Main pages
         { index: true, element: <Homepage /> },
-        {
-          path: "experience",
-          element: <Experience />,
-          children: [
-            { index: true, element: <TechExpertise /> },
-
-            {
-              path: "tech-expertise",
-              element: <TechExpertise />,
-              children: [
-                { path: "hardware-repair", element: <HardwareRepairPage /> },
-                { path: "pc-build", element: <PCBuildPage /> },
-                {
-                  path: "software-troubleshoot",
-                  element: <SoftwareTroubleshootPage />,
-                },
-              ],
-            },
-          ],
-        },
+        { path: "experience", element: <Experience /> },
         { path: "contact", element: <Contact /> },
+
+        // ✅ These are standalone pages that only show Navbar + the expertise page
+        {
+          path: "experience/tech-expertise/hardware-repair",
+          element: <HardwareRepairPage />,
+        },
+        {
+          path: "experience/tech-expertise/pc-build",
+          element: <PCBuildPage />,
+        },
+        {
+          path: "experience/tech-expertise/software-troubleshoot",
+          element: <SoftwareTroubleshootPage />,
+        },
       ],
     },
   ]);

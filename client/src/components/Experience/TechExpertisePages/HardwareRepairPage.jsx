@@ -9,6 +9,7 @@ import { Pagination, Autoplay, EffectCards } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
+import { useNavigate } from "react-router-dom";
 
 const HardwareRepairCard = ({ item }) => {
   return (
@@ -57,6 +58,7 @@ const HardwareRepairCard = ({ item }) => {
 };
 
 function HardwareRepairPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, isLoading, error } = useSelector(
     (state) => state.hardwareRepair
@@ -129,7 +131,13 @@ function HardwareRepairPage() {
   }
 
   return (
-    <div className="bg-zinc-900 min-h-screen p-8 lg:p-16">
+    <div className="bg-black min-h-screen p-8 lg:p-16">
+      <button
+        onClick={() => navigate("/experience")}
+        className="mb-10 px-6 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all shadow-md cursor-pointer"
+      >
+        ← Back
+      </button>
       <header className="mb-12 text-center">
         <motion.h1
           className="text-4xl lg:text-6xl font-extrabold text-white mb-2 tracking-tight"
