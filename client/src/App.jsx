@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import Experience from "./pages/Experience";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
+
 import TechExpertise from "./components/Experience/TechExpertise";
 import HardwareRepairPage from "./components/Experience/TechExpertisePages/HardwareRepairPage";
 import PCBuildPage from "./components/Experience/TechExpertisePages/PCBuildPage";
@@ -28,6 +29,8 @@ function App() {
           path: "experience",
           element: <Experience />,
           children: [
+            { index: true, element: <TechExpertise /> },
+
             {
               path: "tech-expertise",
               element: <TechExpertise />,
