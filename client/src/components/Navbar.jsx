@@ -96,13 +96,13 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <a
+                <NavLink
                   href="#contact"
-                  className={staticLinkClass}
+                  className={linkClass}
                   onClick={() => setIsOpen(false)}
                 >
                   Contact
-                </a>
+                </NavLink>
               </li>
               <li>
                 <a

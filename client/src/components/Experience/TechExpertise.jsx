@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTechExpertise } from "../../store/techExpertiseSlice";
 import { motion } from "framer-motion";
+import { Link, Outlet } from "react-router-dom";
 
 function TechExpertise() {
   const dispatch = useDispatch();
@@ -25,39 +26,52 @@ function TechExpertise() {
     );
 
   return (
-    <div className=" min-h-screen py-24 px-6 md:px-12">
+    <div className="min-h-screen py-24 px-6 md:px-12">
       <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-center mb-16 drop-shadow-lg">
         Tech Expertise
       </h1>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((expertise, i) => (
-          <motion.div
-            key={expertise.id}
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 40px rgba(59,130,246,0.4)",
-            }}
-            className="flex flex-col items-center p-8 rounded-3xl transition-all duration-300 transform-gpu cursor-pointer
-                       bg-gray-800 border-2 border-gray-700 hover:border-blue-500 shadow-2xl hover:shadow-blue-500/30"
-          >
-            <div
-              className="w-36 h-36 mb-6 rounded-full bg-center bg-cover  shadow-lg"
-              style={{ backgroundImage: `url(${expertise.image})` }}
-            ></div>
+        {items.map((expertise, i) => {
+          let route = "";
+          const title = expertise.title.toLowerCase();
 
-            <h2 className="text-2xl font-bold text-white mb-3">
-              {expertise.title}
-            </h2>
-            <p className="text-md text-gray-300 text-center leading-relaxed">
-              {expertise.description}
-            </p>
-          </motion.div>
-        ))}
+          if (title.includes("repair")) route = "hardware-repair";
+          else if (title.includes("pc")) route = "pc-build";
+          else if (title.includes("troubleshoot"))
+            route = "software-troubleshoot";
+
+          console.log("Resolved route:", expertise.title, "→", route);
+          return (
+            <Link key={expertise.id} to={`/experience/tech-expertise/${route}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 40px rgba(59,130,246,0.4)",
+                }}
+                className="flex flex-col items-center p-8 rounded-3xl transition-all duration-300 transform-gpu cursor-pointer
+                   bg-gray-800 border-2 border-gray-700 hover:border-blue-500 shadow-2xl hover:shadow-blue-500/30"
+              >
+                <div
+                  className="w-36 h-36 mb-6 rounded-full bg-center bg-cover shadow-lg"
+                  style={{ backgroundImage: `url(${expertise.image})` }}
+                ></div>
+
+                <h2 className="text-2xl font-bold text-white mb-3">
+                  {expertise.title}
+                </h2>
+                <p className="text-md text-gray-300 text-center leading-relaxed">
+                  {expertise.description}
+                </p>
+              </motion.div>
+            </Link>
+          );
+        })}
       </div>
+      <Outlet />
     </div>
   );
 }
