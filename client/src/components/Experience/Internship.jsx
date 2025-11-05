@@ -23,7 +23,7 @@ function Internship() {
     return <p className="text-white text-center mt-10">No data found.</p>;
 
   return (
-    <section className="m-40">
+    <section className="m-0 lg:m-40">
       <div
         className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col lg:flex-row items-center justify-between px-10 py-20 text-white"
         style={{
@@ -58,13 +58,13 @@ function Internship() {
           </p>
         </div>
 
-        <div className="relative z-10  lg:w-1/2 mt-10 lg:mt-0">
+        <div className="relative z-10 lg:w-1/2 mt-10 lg:mt-0">
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={10}
             slidesPerView={1}
             navigation
-            className="w-100 "
+            className="w-80 lg:w-100 "
           >
             {items.images.map((img, i) => (
               <SwiperSlide key={i}>

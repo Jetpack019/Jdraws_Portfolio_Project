@@ -95,15 +95,13 @@ function Navbar() {
                   Experience
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  href="#contact"
-                  className={linkClass}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contact
-                </NavLink>
-              </li>
+              <NavLink
+                to="/contact"
+                className={linkClass}
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </NavLink>
               <li>
                 <a
                   href="/path/to/your/CV.pdf"

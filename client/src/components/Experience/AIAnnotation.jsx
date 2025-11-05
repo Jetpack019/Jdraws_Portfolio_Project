@@ -37,7 +37,7 @@ function AIAnnotation() {
         >
           <div>
             <h2 className="text-xl text-white">Contributes to:</h2>
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4 lg:flex-row">
               {items.work?.map((icon, i) => (
                 <motion.img
                   key={i}
