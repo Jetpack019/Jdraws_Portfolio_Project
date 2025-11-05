@@ -6,10 +6,10 @@ const skills = {
     { name: "React", icon: "devicon-react-original colored", level: 90 },
     { name: "CSS", icon: "devicon-css3-plain colored", level: 85 },
     { name: "SQL", icon: "devicon-mysql-plain colored", level: 80 },
-    { name: "Tailwind", icon: "devicon-tailwindcss-plain colored", level: 95 },
+    { name: "Tailwind", icon: "devicon-tailwindcss-plain colored", level: 80 },
     { name: "HTML", icon: "devicon-html5-plain colored", level: 95 },
-    { name: "JavaScript", icon: "devicon-javascript-plain colored", level: 88 },
-    { name: "SASS", icon: "devicon-sass-original colored", level: 75 },
+    { name: "JavaScript", icon: "devicon-javascript-plain colored", level: 80 },
+    { name: "SASS", icon: "devicon-sass-original colored", level: 90 },
     { name: "Vite", icon: "devicon-vite-original colored", level: 85 },
   ],
   basic: [
