@@ -84,14 +84,11 @@ function HeroSection() {
                 </button>
               </NavLink>
 
-              <a
-                href={`mailto:${item.email || "your-email@example.com"}`}
-                className="inline-flex items-center"
-              >
+              <NavLink to="/contact" className="inline-flex items-center">
                 <button className="px-6 py-3 border border-cyan-400 text-cyan-400 hover:border-white hover:text-white rounded-full font-medium flex items-center gap-2 transition">
                   <Mail size={18} /> Contact Me
                 </button>
-              </a>
+              </NavLink>
             </motion.div>
           </div>
 
