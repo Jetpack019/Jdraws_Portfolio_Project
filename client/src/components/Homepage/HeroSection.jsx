@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../store/userSlice";
 import { motion } from "framer-motion";
 import { FolderGit2, Mail } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 function HeroSection() {
   const dispatch = useDispatch();
@@ -77,11 +78,11 @@ function HeroSection() {
               custom={4}
               className="flex justify-center md:justify-start space-x-4 mt-6"
             >
-              <a href="/experience" className="inline-flex items-center">
+              <NavLink to="/experience" className="inline-flex items-center">
                 <button className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-full font-medium flex items-center gap-2 transition">
                   <FolderGit2 size={18} /> View Projects
                 </button>
-              </a>
+              </NavLink>
 
               <a
                 href={`mailto:${item.email || "your-email@example.com"}`}
