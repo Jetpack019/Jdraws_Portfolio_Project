@@ -79,13 +79,13 @@ function HeroSection() {
               className="flex justify-center md:justify-start space-x-4 mt-6"
             >
               <NavLink to="/experience" className="inline-flex items-center">
-                <button className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-full font-medium flex items-center gap-2 transition">
+                <button className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-full font-medium flex items-center gap-2 transition cursor-pointer">
                   <FolderGit2 size={18} /> View Projects
                 </button>
               </NavLink>
 
               <NavLink to="/contact" className="inline-flex items-center">
-                <button className="px-6 py-3 border border-cyan-400 text-cyan-400 hover:border-white hover:text-white rounded-full font-medium flex items-center gap-2 transition">
+                <button className="px-6 py-3 border border-cyan-400 text-cyan-400 hover:border-white hover:text-white rounded-full font-medium flex items-center gap-2 transition cursor-pointer">
                   <Mail size={18} /> Contact Me
                 </button>
               </NavLink>

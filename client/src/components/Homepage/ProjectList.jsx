@@ -82,6 +82,17 @@ function ProjectList() {
             <h2 className="text-2xl font-bold mb-4 text-[#00B2FF]">
               {selectedProject.title}
             </h2>
+            <p className="text-sm cursor-pointer">
+              <span className="font-semibold text-[#00B2FF]">Link:</span>{" "}
+              <a
+                href={selectedProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00B2FF] hover:underline"
+              >
+                {selectedProject.link}
+              </a>
+            </p>
             <p className="text-gray-300 mb-6">{selectedProject.description}</p>
 
             <img
