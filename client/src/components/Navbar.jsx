@@ -48,7 +48,7 @@ function Navbar() {
           </li>
           <li>
             <a
-              href="/path/to/your/CV.pdf"
+              href="/path/to/your/myresumejade.pdf"
               download
               className="ml-4 px-4 py-2 text-md bg-cyan-500 text-gray-900 rounded-full font-semibold transition shadow-md opacity-50 pointer-events-none"
               aria-disabled="true"
