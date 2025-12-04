@@ -36,7 +36,9 @@ function AIAnnotation() {
           className="flex-1 p-6 space-y-40"
         >
           <div>
-            <h2 className="text-xl text-white">Contributes to:</h2>
+            <h2 className="text-xl text-white mb-5 lg:mb-10">
+              Contributes to:
+            </h2>
             <div className="flex flex-col gap-4 lg:flex-row">
               {items.work?.map((icon, i) => (
                 <motion.img
@@ -44,7 +46,7 @@ function AIAnnotation() {
                   src={icon}
                   alt={`Tech-${i}`}
                   whileHover={{ scale: 1.1 }}
-                  className="w-50 h-50 object-contain"
+                  className="w-50 h-30 lg:w-60 lg:h-40"
                 />
               ))}
             </div>
@@ -85,7 +87,7 @@ function AIAnnotation() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-11"
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-11 mt-20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -99,7 +101,7 @@ function AIAnnotation() {
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-3 right-3 text-white hover:text-red-500 cursor-pointer"
+                className="absolute top-3 right-3  text-white hover:text-red-500 cursor-pointer"
               >
                 <X size={28} strokeWidth={2} />
               </button>
